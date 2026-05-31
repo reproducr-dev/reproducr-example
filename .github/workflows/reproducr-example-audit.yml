@@ -22,22 +22,24 @@ jobs:
           r-version: 'release'
           use-public-rspm: true
 
-      - name: Install reproducr
-        run: Rscript -e "pak::pkg_install('ndohpenngit/reproducr', ask = FALSE)"
+      - name: Install packages
+        run: |
+          Rscript -e "
+            install.packages('remotes')
+            install.packages(c('palmerpenguins', 'here'))
+            remotes::install_github('ndohpenngit/reproducr', quiet = TRUE)
+          "
 
       - name: Run analysis and audit
         run: |
           Rscript -e "
             library(reproducr)
 
-            # Run the analysis — produces OUTPUTS
             source('analysis.R')
 
-            # Tier 1: scan the script for risks
             report <- audit_script('analysis.R', verbose = FALSE)
             risks  <- risk_score(report)
 
-            # Tier 2: check for drift against last certified run
             if (file.exists('.reproducr.rds')) {
               drift <- check_drift(OUTPUTS, against = 'latest')
               if (any(drift\$status == 'drifted')) {
@@ -48,14 +50,12 @@ jobs:
               message('No prior certification found — establishing baseline.')
             }
 
-            # Certify this run
             certify(
               outputs = OUTPUTS,
               tag     = paste0('ci-', Sys.Date()),
               script  = 'analysis.R'
             )
 
-            # Tier 3: update badge and report
             repro_badge(report, risks, drift = drift, output = 'README')
             repro_report(
               report, risks, drift = drift,
@@ -64,7 +64,6 @@ jobs:
               output_file = 'reproducibility_report.md'
             )
 
-            # Surface risk summary in CI logs
             n_high <- sum(risks\$risk == 'high', na.rm = TRUE)
             if (n_high > 0L) {
               warning(n_high, ' high-severity reproducibility risk(s) detected.')

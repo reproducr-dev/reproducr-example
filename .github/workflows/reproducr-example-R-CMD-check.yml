@@ -18,15 +18,13 @@ jobs:
           r-version: 'release'
           use-public-rspm: true
 
-      - name: Install dependencies
+      - name: Install packages
         run: |
-          Rscript -e "install.packages(c('palmerpenguins', 'testthat', 'here'))"
-
-      - name: Install reproducr
-        run: Rscript -e "remotes::install_github('ndohpenngit/reproducr', quiet = TRUE)"
-
-      - name: Install remotes
-        run: Rscript -e "install.packages('remotes')"
+          Rscript -e "
+            install.packages('remotes')
+            install.packages(c('palmerpenguins', 'testthat', 'here'))
+            remotes::install_github('ndohpenngit/reproducr', quiet = TRUE)
+          "
 
       - name: Run analysis
         run: Rscript analysis.R
