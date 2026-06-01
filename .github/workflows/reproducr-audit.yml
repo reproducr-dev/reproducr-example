@@ -22,6 +22,11 @@ jobs:
           r-version: 'release'
           use-public-rspm: true
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
       - name: Install packages
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -29,7 +34,10 @@ jobs:
           Rscript -e "
             install.packages('remotes')
             install.packages(c('palmerpenguins', 'here'))
-            remotes::install_github('ndohpenngit/reproducr', quiet = TRUE)
+            remotes::install_github('ndohpenngit/reproducr',
+                                    quiet        = TRUE,
+                                    force        = TRUE,
+                                    dependencies = TRUE)
           "
 
       - name: Run analysis and audit
@@ -39,7 +47,7 @@ jobs:
 
             source('analysis.R')
 
-            report <- audit_script('analysis.R', verbose = FALSE)
+            report <- audit_script('analysis.R', renv = FALSE, verbose = FALSE)
             risks  <- risk_score(report)
 
             if (file.exists('.reproducr.rds')) {
@@ -49,7 +57,7 @@ jobs:
               }
             } else {
               drift <- NULL
-              message('No prior certification found — establishing baseline.')
+              message('No prior certification — establishing baseline.')
             }
 
             certify(

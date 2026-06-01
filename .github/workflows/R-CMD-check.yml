@@ -18,6 +18,11 @@ jobs:
           r-version: 'release'
           use-public-rspm: true
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
       - name: Install packages
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -25,7 +30,10 @@ jobs:
           Rscript -e "
             install.packages('remotes')
             install.packages(c('palmerpenguins', 'testthat', 'here'))
-            remotes::install_github('ndohpenngit/reproducr', quiet = TRUE)
+            remotes::install_github('ndohpenngit/reproducr',
+                                    quiet        = TRUE,
+                                    force        = TRUE,
+                                    dependencies = TRUE)
           "
 
       - name: Run analysis
