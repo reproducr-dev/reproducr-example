@@ -1,8 +1,8 @@
 # reproducr-example <a href="https://ndohpenngit.github.io/reproducr/"><img src="https://raw.githubusercontent.com/ndohpenngit/reproducr/main/man/figures/logo.svg" align="right" height="120" alt="reproducr website" /></a>
 
 <!-- badges: start -->
-[![reproducibility](https://img.shields.io/badge/reproducibility-at%20risk-red)](https://ndohpenngit.github.io/reproducr/)
-[![R-CMD-check](https://github.com/ndohpenngit/reproducr-example/actions/workflows/reproducr-example-R-CMD-check.yml/badge.svg)](https://github.com/ndohpenngit/reproducr-example/actions/workflows/reproducr-example-R-CMD-check.yml)
+[![reproducibility](https://img.shields.io/badge/reproducibility-reproducible-brightgreen)](https://ndohpenngit.github.io/reproducr/)
+[![R-CMD-check](https://github.com/ndohpenngit/reproducr-example/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/ndohpenngit/reproducr-example/actions/workflows/R-CMD-check.yml)
 <!-- badges: end -->
 
 > A live end-to-end demonstration of the [`reproducr`](https://github.com/ndohpenngit/reproducr)
