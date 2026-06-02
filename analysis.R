@@ -1,5 +1,5 @@
 # Palmer Penguins — Species Body Mass Analysis
-# reproducr-example: https://github.com/ndohpenngit/reproducr-example
+# reproducr-example: https://github.com/reproducr-dev/reproducr-example
 #
 # This script demonstrates a reproducr-aware analysis workflow:
 #   - All qualified calls use pkg::fn namespace

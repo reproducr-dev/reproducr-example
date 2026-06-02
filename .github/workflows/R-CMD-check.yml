@@ -30,7 +30,7 @@ jobs:
           Rscript -e "
             install.packages('remotes')
             install.packages(c('palmerpenguins', 'testthat', 'here'))
-            remotes::install_github('ndohpenngit/reproducr',
+            remotes::install_github('reproducr-dev/reproducr',
                                     quiet        = TRUE,
                                     force        = TRUE,
                                     dependencies = TRUE)

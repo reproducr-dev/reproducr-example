@@ -1,11 +1,11 @@
-# reproducr-example <a href="https://ndohpenngit.github.io/reproducr/"><img src="https://raw.githubusercontent.com/ndohpenngit/reproducr/main/man/figures/logo.svg" align="right" height="120" alt="reproducr website" /></a>
+# reproducr-example <a href="https://reproducr-dev.github.io/reproducr/"><img src="https://raw.githubusercontent.com/reproducr-dev/reproducr/main/man/figures/logo.svg" align="right" height="120" alt="reproducr website" /></a>
 
 <!-- badges: start -->
-[![reproducibility](https://img.shields.io/badge/reproducibility-reproducible-brightgreen)](https://ndohpenngit.github.io/reproducr/)
-[![R-CMD-check](https://github.com/ndohpenngit/reproducr-example/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/ndohpenngit/reproducr-example/actions/workflows/R-CMD-check.yml)
+[![reproducibility](https://img.shields.io/badge/reproducibility-reproducible-brightgreen)](https://reproducr-dev.github.io/reproducr/)
+[![R-CMD-check](https://github.com/reproducr-dev/reproducr-example/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/reproducr-dev/reproducr-example/actions/workflows/R-CMD-check.yml)
 <!-- badges: end -->
 
-> A live end-to-end demonstration of the [`reproducr`](https://github.com/ndohpenngit/reproducr)
+> A live end-to-end demonstration of the [`reproducr`](https://github.com/reproducr-dev/reproducr)
 > workflow applied to a real analysis of the Palmer Penguins dataset.
 
 **See the full walkthrough: [`DEMO.md`](DEMO.md)**
@@ -119,7 +119,7 @@ auditable history of every certified run.
 # Install dependencies
 install.packages("palmerpenguins")
 install.packages("remotes")
-remotes::install_github("ndohpenngit/reproducr")
+remotes::install_github("reproducr-dev/reproducr")
 
 # Run the full pipeline
 source("analysis.R")
@@ -152,6 +152,6 @@ building a timestamped audit trail across the project lifetime.
 ## About
 
 This is a companion repository to the
-[`reproducr`](https://github.com/ndohpenngit/reproducr) R package.
+[`reproducr`](https://github.com/reproducr-dev/reproducr) R package.
 See [`DEMO.md`](DEMO.md) for the complete annotated walkthrough with
 real output at every step.
